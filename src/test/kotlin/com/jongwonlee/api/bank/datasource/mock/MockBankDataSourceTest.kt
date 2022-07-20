@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 internal class MockBankDataSourceTest {
 
     @Test
-    fun 'should' () {
+    fun 'should provide a collection of banks'() {
         // given
 
         // when
