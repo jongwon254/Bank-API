@@ -24,7 +24,7 @@ class BankController(private val service: BankService) {
     fun getBanks(): Collection<Bank> = service.getBanks()
 
     @GetMapping("/{accountNumber}")
-    fun getBank(@PathVariable accountNumber: String) = service.getBank(accountNumber)
+    fun getBank(@PathVariable accountNumber: String): Bank = service.getBank(accountNumber)
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -32,5 +32,9 @@ class BankController(private val service: BankService) {
 
     @PatchMapping
     fun updateBank(@RequestBody bank: Bank): Bank = service.updateBank(bank)
+
+    @DeleteMapping("/{accountNumber}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deleteBank(@PathVariable accountNumber: String): Unit = service.deleteBank(accountNumber)
 
 }
