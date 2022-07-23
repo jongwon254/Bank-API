@@ -20,6 +20,14 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	runtimeOnly("org.postgresql:postgresql")
+
+	implementation("com.google.code.gson:gson:2.9.0")
+	implementation("org.springframework.boot:spring-boot-starter-hateoas")
+	implementation("org.jetbrains.exposed", "exposed-core", "0.38.2")
+	implementation("org.jetbrains.exposed", "exposed-dao", "0.38.2")
+	implementation("org.jetbrains.exposed", "exposed-jdbc", "0.38.2")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.mockk:mockk:1.12.4")
 }
