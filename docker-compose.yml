@@ -1,0 +1,13 @@
+postgres: &POSTGRES
+  image: postgres:alpine
+
+postgres-dev:
+  <<: *POSTGRES
+  environment:
+    POSTGRES_DB: "db"
+    POSTGRES_HOST_AUTH_METHOD: "trust"
+  ports:
+    - 5432:5432
+  volumes:
+    - ./db/dev/databases.sql:/docker-entrypoint-initdb.d/1-dev-database.sql
+    - ./db/dev/roles.sql:/docker-entrypoint-initdb.d/2-dev-roles.sql
