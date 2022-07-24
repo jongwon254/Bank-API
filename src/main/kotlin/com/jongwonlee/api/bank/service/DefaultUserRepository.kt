@@ -4,6 +4,7 @@ import com.jongwonlee.api.bank.database.Banks
 import com.jongwonlee.api.bank.model.BankDB
 import com.jongwonlee.api.bank.service.CrudRepository
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.statements.UpdateBuilder
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.stereotype.Repository
@@ -53,11 +54,12 @@ class DefaultUserRepository: UserRepository {
     }
 
     override fun deleteBank(id: Int) {
-        TODO("Not yet implemented")
+        transaction {
+            Banks.select { Banks.id eq id}.map { listBanks(it) }.firstOrNull() ?:
+            throw NoSuchElementException("Error: No Bank exists with id $id.")
+            Banks.deleteWhere { Banks.id eq id }
+        }
     }
-
-
-
 
     private fun listBanks(r: ResultRow) =
         BankDB(r[Banks.id],
@@ -81,6 +83,4 @@ class DefaultUserRepository: UserRepository {
         it[transaction_fee] = bank.transaction_fee
         it[trust] = bank.trust
     }
-
-
 }
