@@ -8,15 +8,8 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/banks")
+@RequestMapping("api/banks")
 class DatabaseController(val repo: UserRepository) {
-
-    //@GetMapping("/")//, produces = [MediaTypes.HAL_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE ])
-    //@ResponseBody
-    //fun helloWorld(): ResponseEntity<Any?> {
-    //    val list = Banks.getAll()
-    //   return ResponseEntity(Gson().toJson(list), HttpStatus.OK)
-    //}
 
     @ExceptionHandler(NoSuchElementException::class)
     fun handleNotFound(e: NoSuchElementException): ResponseEntity<String> =
