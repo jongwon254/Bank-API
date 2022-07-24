@@ -1,6 +1,5 @@
 package com.jongwonlee.api.bank.service
 
-import com.jongwonlee.api.bank.datasource.BankDataSource
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Assertions.*

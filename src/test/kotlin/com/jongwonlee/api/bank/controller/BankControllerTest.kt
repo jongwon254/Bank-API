@@ -1,7 +1,6 @@
 package com.jongwonlee.api.bank.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.jongwonlee.api.bank.model.Bank
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
