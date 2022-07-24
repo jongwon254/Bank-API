@@ -35,7 +35,21 @@ class DefaultUserRepository: UserRepository {
     }
 
     override fun updateBank(bank: BankDB): BankDB {
-        TODO("Not yet implemented")
+        transaction {
+            Banks.select { Banks.id eq bank.id }.map { listBanks(it) }.firstOrNull() ?:
+            throw NoSuchElementException("Error: No Bank exists with id ${bank.id}.")
+            Banks.update({ Banks.id eq bank.id }) {
+                it[ip_address] = bank.ip_address
+                it[account_number] = bank.account_number
+                it[port] = bank.port
+                it[node_identifier] = bank.node_identifier
+                it[version] = bank.version
+                it[protocol] = bank.protocol
+                it[transaction_fee] = bank.transaction_fee
+                it[trust] = bank.trust
+            }
+        }
+        return bank
     }
 
     override fun deleteBank(id: Int) {
