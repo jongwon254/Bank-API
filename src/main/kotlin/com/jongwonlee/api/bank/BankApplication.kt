@@ -21,6 +21,7 @@ fun main(args: Array<String>) {
 	Database.connect(dbUrl, driver = "org.postgresql.Driver", user = dbUser, password = dbPass)
 
 	// Initialize database with mock banks
+	// start PostgreSQL with Docker
 	transaction {
 		addLogger(StdOutSqlLogger)
 
