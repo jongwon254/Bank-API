@@ -36,4 +36,10 @@ class DatabaseController(val repo: UserRepository) {
     @ResponseStatus(HttpStatus.CREATED)
     fun addBank(@RequestBody bank: BankDB) = repo.createBank(bank)
 
+    @PatchMapping
+    fun updateBank(@RequestBody bank: BankDB) = repo.updateBank(bank)
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deleteBank(@PathVariable id: Int) = repo.deleteBank(id)
 }

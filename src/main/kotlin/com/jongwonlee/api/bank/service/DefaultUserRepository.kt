@@ -34,6 +34,15 @@ class DefaultUserRepository: UserRepository {
         return bank
     }
 
+    override fun updateBank(bank: BankDB): BankDB {
+        TODO("Not yet implemented")
+    }
+
+    override fun deleteBank(id: Int) {
+        TODO("Not yet implemented")
+    }
+
+
 
 
     private fun listBanks(r: ResultRow) =
