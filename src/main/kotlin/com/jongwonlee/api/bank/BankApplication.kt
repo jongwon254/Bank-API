@@ -15,8 +15,8 @@ fun main(args: Array<String>) {
 
 	// Docker PostgreSQL Database Connection (see also db/dev/*.sql and docker-compose.yml)
 	val dbUrl = "jdbc:postgresql://localhost:5432/bank_db"
-	val dbUser = "demo_dev_rw"
-	val dbPass = "dev_database_passwd"
+	val dbUser = "bank_dev_rw"
+	val dbPass = "dev_bank_passwd"
 
 	Database.connect(dbUrl, driver = "org.postgresql.Driver", user = dbUser, password = dbPass)
 
