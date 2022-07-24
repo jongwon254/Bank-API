@@ -1,9 +1,6 @@
 package com.jongwonlee.api.bank.database
 
-import com.jongwonlee.api.bank.model.Bank
 import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.transactions.transaction
 
 object Banks: Table() {
     val id = integer("id").autoIncrement()
@@ -15,8 +12,4 @@ object Banks: Table() {
     val protocol = varchar("protocol", 50)
     val transaction_fee = integer("transaction_fee")
     val trust = integer("trust")
-
-    //fun getAll(): List<Any> = transaction {
-    //    Banks.selectAll().map { it[ip_address] }
-    //}
 }

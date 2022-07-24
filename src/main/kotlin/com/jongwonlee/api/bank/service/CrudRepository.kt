@@ -9,5 +9,9 @@ import org.springframework.stereotype.Repository
 
 interface CrudRepository<T> {
     fun findAll(): Iterable<T>
+
+    fun findBank(id: Int): BankDB
+
+    fun createBank(bank: BankDB): BankDB
 }
 
