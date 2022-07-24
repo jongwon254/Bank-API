@@ -5,9 +5,6 @@ import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import org.springframework.boot.web.client.RestTemplateBuilder
-import org.springframework.context.annotation.Bean
-import org.springframework.web.client.RestTemplate
 
 @SpringBootApplication
 class BankApplication {
@@ -16,12 +13,14 @@ class BankApplication {
 
 fun main(args: Array<String>) {
 
+	// Docker PostgreSQL Database Connection (see also db/dev/*.sql and docker-compose.yml)
 	val dbUrl = "jdbc:postgresql://localhost:5432/bank_db"
 	val dbUser = "demo_dev_rw"
 	val dbPass = "dev_database_passwd"
 
 	Database.connect(dbUrl, driver = "org.postgresql.Driver", user = dbUser, password = dbPass)
 
+	// Initialize database with mock banks
 	transaction {
 		addLogger(StdOutSqlLogger)
 
