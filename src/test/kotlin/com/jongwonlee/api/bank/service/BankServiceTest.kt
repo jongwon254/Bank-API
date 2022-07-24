@@ -5,6 +5,7 @@ import io.mockk.verify
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
+// TDD for old domain
 internal class BankServiceTest {
 
     private val dataSource: BankDataSource = mockk(relaxed = true)
