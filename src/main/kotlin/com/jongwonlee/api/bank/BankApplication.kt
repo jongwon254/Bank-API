@@ -12,8 +12,6 @@ import org.springframework.web.client.RestTemplate
 @SpringBootApplication
 class BankApplication {
 
-	@Bean
-	fun restTemplate(builder: RestTemplateBuilder): RestTemplate = builder.build()
 }
 
 fun main(args: Array<String>) {
@@ -39,7 +37,6 @@ fun main(args: Array<String>) {
 			it[protocol] = "http"
 			it[transaction_fee] = 32
 			it[trust] = 1
-
 		}
 
 		Banks.insert {
@@ -51,6 +48,17 @@ fun main(args: Array<String>) {
 			it[protocol] = "http"
 			it[transaction_fee] = 10
 			it[trust] = 12
+		}
+
+		Banks.insert {
+			it[ip_address] = "3.3.3.3"
+			it[account_number] = "dwd912dfl"
+			it[port] = 80
+			it[node_identifier] = "0vue0lxn"
+			it[version] = "v3.1"
+			it[protocol] = "http"
+			it[transaction_fee] = 14
+			it[trust] = 5
 		}
 	}
 	runApplication<BankApplication>(*args)

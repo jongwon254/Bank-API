@@ -21,7 +21,7 @@ class DefaultUserRepository: UserRepository {
 
     override fun findBank(id: Int): BankDB =
         transaction {
-            Banks.select { Banks.id eq id}.map { listBanks(it) }.firstOrNull() ?:
+            Banks.select { Banks.id eq id }.map { listBanks(it) }.firstOrNull() ?:
             throw NoSuchElementException("Error: No Bank exists with id $id.") }
 
     override fun createBank(bank: BankDB): BankDB {
