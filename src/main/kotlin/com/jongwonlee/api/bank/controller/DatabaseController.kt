@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("api/banks")
+@CrossOrigin()
 class DatabaseController(val repo: UserRepository) {
 
     @ExceptionHandler(NoSuchElementException::class)
