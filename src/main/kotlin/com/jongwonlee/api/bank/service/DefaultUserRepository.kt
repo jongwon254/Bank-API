@@ -63,8 +63,8 @@ class DefaultUserRepository: UserRepository {
 
     private fun listBanks(r: ResultRow) =
         BankDB(r[Banks.id],
-            r[Banks.account_number],
             r[Banks.ip_address],
+            r[Banks.account_number],
             r[Banks.port],
             r[Banks.node_identifier],
             r[Banks.version],
