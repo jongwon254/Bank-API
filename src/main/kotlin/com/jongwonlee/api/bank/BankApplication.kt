@@ -29,7 +29,7 @@ fun main(args: Array<String>) {
 		SchemaUtils.create(Banks)
 
 		Banks.insert {
-			it[ip_address] = "1.1.1.1"
+			it[ip_address] = "10.12.1.1"
 			it[account_number] = "da92e7eh"
 			it[port] = 80
 			it[node_identifier] = "31idwoijd"
@@ -40,7 +40,7 @@ fun main(args: Array<String>) {
 		}
 
 		Banks.insert {
-			it[ip_address] = "2.2.2.2"
+			it[ip_address] = "26.21.23.2"
 			it[account_number] = "f00fed98"
 			it[port] = 80
 			it[node_identifier] = "9jd83g4n"
@@ -51,7 +51,7 @@ fun main(args: Array<String>) {
 		}
 
 		Banks.insert {
-			it[ip_address] = "3.3.3.3"
+			it[ip_address] = "39.30.31.3"
 			it[account_number] = "dwd912df"
 			it[port] = 80
 			it[node_identifier] = "0vue0lxn"
