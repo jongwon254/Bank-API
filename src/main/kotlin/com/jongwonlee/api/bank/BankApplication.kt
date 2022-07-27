@@ -30,9 +30,9 @@ fun main(args: Array<String>) {
 
 		Banks.insert {
 			it[ip_address] = "1.1.1.1"
-			it[account_number] = "da92e7ehd891"
+			it[account_number] = "da92e7eh"
 			it[port] = 80
-			it[node_identifier] = "31idwoijd12d"
+			it[node_identifier] = "31idwoijd"
 			it[version] = "v1.0"
 			it[protocol] = "http"
 			it[transaction_fee] = 32
@@ -43,7 +43,7 @@ fun main(args: Array<String>) {
 			it[ip_address] = "2.2.2.2"
 			it[account_number] = "f00fed98"
 			it[port] = 80
-			it[node_identifier] = "9jd83g4nc"
+			it[node_identifier] = "9jd83g4n"
 			it[version] = "v1.6"
 			it[protocol] = "http"
 			it[transaction_fee] = 10
@@ -52,7 +52,7 @@ fun main(args: Array<String>) {
 
 		Banks.insert {
 			it[ip_address] = "3.3.3.3"
-			it[account_number] = "dwd912dfl"
+			it[account_number] = "dwd912df"
 			it[port] = 80
 			it[node_identifier] = "0vue0lxn"
 			it[version] = "v3.1"
