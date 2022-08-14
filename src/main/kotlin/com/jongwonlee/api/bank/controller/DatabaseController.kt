@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin()
 class DatabaseController(val repo: UserRepository) {
 
+    // Exceptions for 404 and 400 code
     @ExceptionHandler(NoSuchElementException::class)
     fun handleNotFound(e: NoSuchElementException): ResponseEntity<String> =
         ResponseEntity(e.message, HttpStatus.NOT_FOUND)
@@ -20,19 +21,24 @@ class DatabaseController(val repo: UserRepository) {
     fun handleBadRequest(e: IllegalArgumentException): ResponseEntity<String> =
         ResponseEntity(e.message, HttpStatus.BAD_REQUEST)
 
+    // Getting all banks
     @GetMapping
     fun getBanks() = repo.findAll()
 
+    // Getting a bank with ID
     @GetMapping("/{id}")
     fun getBank(@PathVariable id: Int) = repo.findBank(id)
 
+    // Creating a bank
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun addBank(@RequestBody bank: BankDB) = repo.createBank(bank)
 
+    // Updating a bank
     @PatchMapping
     fun updateBank(@RequestBody bank: BankDB) = repo.updateBank(bank)
 
+    // Deleting a bank
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteBank(@PathVariable id: Int) = repo.deleteBank(id)

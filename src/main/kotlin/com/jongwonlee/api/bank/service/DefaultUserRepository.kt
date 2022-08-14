@@ -12,18 +12,22 @@ import org.springframework.stereotype.Service
 
 interface UserRepository: CrudRepository<BankDB>
 
+// Implementation of service interface
 @Repository
 @Service
 class DefaultUserRepository: UserRepository {
 
+    // Get all banks
     override fun findAll(): Iterable<BankDB> =
         transaction { Banks.selectAll().map { listBanks(it) } }
 
+    // Get one bank with ID
     override fun findBank(id: Int): BankDB =
         transaction {
             Banks.select { Banks.id eq id }.map { listBanks(it) }.firstOrNull() ?:
             throw NoSuchElementException("Error: No Bank exists with id $id.") }
 
+    // Create one bank if it does not exist
     override fun createBank(bank: BankDB): BankDB {
         transaction {
             if(Banks.select { Banks.id eq bank.id }.map { listBanks(it) }.firstOrNull() == null) {
@@ -35,6 +39,7 @@ class DefaultUserRepository: UserRepository {
         return bank
     }
 
+    // Update the bank if it exists
     override fun updateBank(bank: BankDB): BankDB {
         transaction {
             Banks.select { Banks.id eq bank.id }.map { listBanks(it) }.firstOrNull() ?:
@@ -53,6 +58,7 @@ class DefaultUserRepository: UserRepository {
         return bank
     }
 
+    // Delete the bank if it exists
     override fun deleteBank(id: Int) {
         transaction {
             Banks.select { Banks.id eq id}.map { listBanks(it) }.firstOrNull() ?:
@@ -61,6 +67,7 @@ class DefaultUserRepository: UserRepository {
         }
     }
 
+    // helper method for iterating bank list
     private fun listBanks(r: ResultRow) =
         BankDB(r[Banks.id],
             r[Banks.ip_address],
@@ -72,6 +79,7 @@ class DefaultUserRepository: UserRepository {
             r[Banks.transaction_fee],
             r[Banks.trust])
 
+    // helper method for creating a bank from the request body
     private fun addBank(bank: BankDB): Banks.(UpdateBuilder<*>) -> Unit = {
         it[id] = bank.id
         it[ip_address] = bank.ip_address

@@ -1,5 +1,6 @@
 package com.jongwonlee.api.bank.model
 
+// JSON model
 class BankDB(
     val id: Int,
     val ip_address: String,

@@ -1,3 +1,4 @@
+# Docker file for PostgreSQL
 postgres: &POSTGRES
   image: postgres:alpine
 

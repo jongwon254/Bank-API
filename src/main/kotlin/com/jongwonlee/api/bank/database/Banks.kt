@@ -2,6 +2,7 @@ package com.jongwonlee.api.bank.database
 
 import org.jetbrains.exposed.sql.Table
 
+// Database model
 object Banks: Table() {
     val id = integer("id").autoIncrement()
     val ip_address = varchar("ip_address", 50)
